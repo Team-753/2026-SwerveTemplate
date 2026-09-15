@@ -1,5 +1,5 @@
 import robotpy,commands2,wpilib
-from drivetrainCommand import driveTrainCommand,driveTrainSubsystem
+from DriveTrain.drivetrainCommand import driveTrainCommand,driveTrainSubsystem
 class myRobot(commands2.TimedCommandRobot):
     def __init__(self):
         pass

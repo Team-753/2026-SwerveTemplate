@@ -1,6 +1,9 @@
 import commands2,phoenix6
+#the "swerveModule" class is a repeatable piece of code that you can name, if you're confused it might help to look at the "driveTrainSubsystem" class and see how its used
 class swerveModule():
     def __init__(self,driveMotorID,turnMotorID,canBusName:str="rio") -> None:
+                                                        #adding the ":str="rio" " makes it so the canBusName defaults to that value if nothing is put in
+                                                        #adding "-> None" is just a standard procedure but it doesnt actually do anything
         self.driveMotor=phoenix6.hardware.TalonFX(driveMotorID,canBusName)
         self.turnMotor=phoenix6.hardware.TalonFX(turnMotorID,canBusName)
         driveMotorConfig=phoenix6.configs.TalonFXConfiguration()
