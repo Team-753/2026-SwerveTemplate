@@ -73,15 +73,17 @@ class driveTrainSubsystem(commands2.Subsystem):
         #NOTE Cannot turn, only translational movement, not useable for actual competitons, TESTING ONLY
         for i in range(4):
             self.swerveModules[i].setState(allSwerveRotation,allSwerveSpeed)
+            #cycles through each swerve and gives it commands
     def setDrivetrain(self,velocityMS:wpimath.geometry.Translation2d,radPS):
         swerveDesiredState=self.kinematicsHandler.calculateKinematics(velocityMS.x,velocityMS.y,radPS,self.compass.getRotation2d())
+        #kinematics handler takes robot speeds relative to the field and turns them into swerve speeds
         for i in range(4):
             self.swerveModules[i].setState(swerveDesiredState[i].angle,swerveDesiredState[i].speed)
+            #cycles through each swerve and gives it commands
 class driveTrainCommand(commands2.Command):
     def __init__(self,driveSubsys:driveTrainSubsystem):
         self.addRequirements(driveSubsys)
         self.driveSubsys=driveSubsys
-        return super().initialize()
     def execute(self):
         self.driveSubsys.setDrivetrain(0,1)
 class joystickSubsystem():
